@@ -25,7 +25,7 @@ raise OptionParser::MissingArgument if options[:context].nil?
 raise OptionParser::MissingArgument if options[:dir].nil?
 
 #compile the regex pattern
-REGEX_PATTERN = "#{options[:term1]}\\W+(?:\\w+\\W+){0,#{options[:context]}}?#{options[:term2]}|#{options[:term2]}\\W+(?:\\w+\\W+){0,#{options[:context]}}?#{options[:term1]}"
+REGEX_PATTERN = "\\b#{options[:term1]}\\W+(?:\\w+\\W+){0,#{options[:context]}}#{options[:term2]}\\b|\\b#{options[:term2]}\\W+(?:\\w+\\W+){0,#{options[:context]}}#{options[:term1]}\\b"
 
 #create regex parser
 rp = Regexp.new(REGEX_PATTERN, true)
